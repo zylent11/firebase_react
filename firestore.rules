@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null &&
+             request.auth.uid == "fjfmAze6YidvgHIh6fmvzaqNqQt2";
+    }
+
+    match /orders/{orderId} {
+      allow read, write: if isAdmin();
+    }
+
+    match /products/{productId} {
+      allow write: if isAdmin();
+      allow read: if true;
+    }
+    
+    match /categories/{id} {
+  		allow write: if isAdmin();
+  		allow read: if true;
+		}
+    
+  }
+}
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /products/{productId}/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.auth.uid == "fjfmAze6YidvgHIh6fmvzaqNqQt2";
+    }
+  }
+}
