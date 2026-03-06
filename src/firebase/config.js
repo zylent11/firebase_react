@@ -5,14 +5,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyC3ZHOagX3v3GW9zqVslgixVT9852iqbxc",
-  authDomain: "shepherd-sbookstore.firebaseapp.com",
-  projectId: "shepherd-sbookstore",
-  storageBucket: "shepherd-sbookstore.firebasestorage.app",
-  messagingSenderId: "93896212710",
-  appId: "1:93896212710:web:eefce969919bf3cd70fb27",
-};
+const firebaseConfig = {};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
